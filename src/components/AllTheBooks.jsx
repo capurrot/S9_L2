@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button, FormSelect } from "react-bootstrap";
 import fantasy from "../databooks/fantasy.json";
 import history from "../databooks/history.json";
 import horror from "../databooks/horror.json";
@@ -62,13 +62,37 @@ class AllTheBooks extends Component {
           </Col>
         </Row>
         <Row className="mb-4">
-          <select className="p-2 rounded" onChange={(e) => this.setState({ selectedBooks: e.target.value })}>
-            <option value="fantasy">Fantasy</option>
-            <option value="history">History</option>
-            <option value="horror">Horror</option>
-            <option value="romance">Romance</option>
-            <option value="scifi">Scifi</option>
-          </select>
+          <Col className="col-4"></Col>
+          <Col className="col-4">
+            <FormSelect
+              onChange={(e) => {
+                switch (e.target.value) {
+                  case "Fantasy":
+                    this.setState({ selectedBooks: fantasy });
+                    break;
+                  case "History":
+                    this.setState({ selectedBooks: history });
+                    break;
+                  case "Horror":
+                    this.setState({ selectedBooks: horror });
+                    break;
+                  case "Romance":
+                    this.setState({ selectedBooks: romance });
+                    break;
+                  case "Scifi":
+                    this.setState({ selectedBooks: scifi });
+                    break;
+                }
+              }}
+            >
+              <option>Fantasy</option>
+              <option>History</option>
+              <option>Horror</option>
+              <option>Romance</option>
+              <option>Scifi</option>
+            </FormSelect>
+          </Col>
+          <Col className="col-4"></Col>
         </Row>
         <Row className="justify-content-center">
           {this.state.selectedBooks.map((book) => (
