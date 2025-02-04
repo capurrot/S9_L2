@@ -1,11 +1,11 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import fantasy from "../databooks/fantasy.json";
+import books from "../databooks/fantasy.json";
 
 const AllTheBooks = () => {
   return (
     <Container>
       <Row className="justify-content-center">
-        {fantasy.map((book) => (
+        {books.map((book) => (
           <Col xs={6} md={4} className="text-center mb-4" key={`book-${book.asin}`}>
             <Card>
               <Card.Img
